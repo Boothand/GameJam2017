@@ -1,0 +1,12 @@
+red 0
+bald -1
+ugly -2
+dumb -2
+smelly -1
+Lucky 1
+Nice 2
+bad -1
+retarded -2
+braindead -2
+yellow 0
+huge 0
