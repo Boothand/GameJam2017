@@ -199,7 +199,7 @@ public class TextGenerator : MonoBehaviour
 			int o;
 			string s = GenerateSentence(out o);
 
-			print(s + " " + o);
+			print(s + " (" + o + ")");
 		}
 	}
 }
