@@ -15,6 +15,8 @@ public class TextGenerator : MonoBehaviour
 
 	List<KeyValuePair<string, int>> subjects = new List<KeyValuePair<string, int>>();
 
+	List<KeyValuePair<string, int>> starters = new List<KeyValuePair<string, int>>();
+
 	List<KeyValuePair<string, int>> preactions = new List<KeyValuePair<string, int>>();
 
 	List<KeyValuePair<string, int>> adjectives = new List<KeyValuePair<string, int>>();
@@ -32,6 +34,8 @@ public class TextGenerator : MonoBehaviour
 	void Start()
 	{
 		//importing words
+		starters = ReadFile("starters.txt");
+
 		subjects = ReadFile("subjects.txt");
 
 		preactions = ReadFile("preactions.txt");
@@ -50,6 +54,7 @@ public class TextGenerator : MonoBehaviour
 
 	void SetupRecipe()
 	{
+		recipe.Add(0, starters);
 		recipe.Add(1, subjects);
 		recipe.Add(2, preactions);
 		recipe.Add(3, adjectives);

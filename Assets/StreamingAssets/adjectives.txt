@@ -9,3 +9,6 @@ bad -1
 braindead -2
 yellow 0
 huge 0
+good 1
+fine 0
+awkward -1
