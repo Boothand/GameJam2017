@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class TextGenerator : MonoBehaviour
 {
@@ -13,8 +14,13 @@ public class TextGenerator : MonoBehaviour
 	//Dictionary<string, int> verbs = new Dictionary<string, int>(); //Action "Speaking"
 
 	List<KeyValuePair<string, int>> subjects = new List<KeyValuePair<string, int>>();
+
+	List<KeyValuePair<string, int>> preactions = new List<KeyValuePair<string, int>>();
+
 	List<KeyValuePair<string, int>> adjectives = new List<KeyValuePair<string, int>>();
 	List<KeyValuePair<string, int>> verbs = new List<KeyValuePair<string, int>>();
+
+	List<KeyValuePair<string, int>> contractions = new List<KeyValuePair<string, int>>();
 
 	//public int[] recipe; //How are the sentence built.
 
@@ -27,8 +33,13 @@ public class TextGenerator : MonoBehaviour
 	{
 		//importing words
 		subjects = ReadFile("subjects.txt");
+
+		preactions = ReadFile("preactions.txt");
+
 		adjectives = ReadFile("adjectives.txt");
 		verbs = ReadFile("verbs.txt");
+
+		contractions = ReadFile("contractions.txt");
 
 		ReadRecipe("recipes.txt");
 		SetupRecipe();
@@ -40,8 +51,10 @@ public class TextGenerator : MonoBehaviour
 	void SetupRecipe()
 	{
 		recipe.Add(1, subjects);
-		recipe.Add(2, adjectives);
-		recipe.Add(3, verbs);
+		recipe.Add(2, preactions);
+		recipe.Add(3, adjectives);
+		recipe.Add(4, verbs);
+		recipe.Add(5, contractions);
 	}
 
 	void ReadRecipe(string path)
@@ -164,9 +177,14 @@ public class TextGenerator : MonoBehaviour
 				offence += dd[rand].Value;
 			}
 		}
+		return FirstCharToUpper(sentence);
+	}
 
-
-		return sentence;
+	public static string FirstCharToUpper(string input)
+	{
+		if (String.IsNullOrEmpty(input))
+			throw new ArgumentException("ARGH!");
+		return input.First().ToString().ToUpper() + input.Substring(1);
 	}
 
 	void Update()
