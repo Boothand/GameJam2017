@@ -74,7 +74,17 @@ public class Mover : ManagedPuppet
 
 		//Fall forward
 		Vector3 dir = hierarchy.hips.transform.forward + Vector3.up * 1f;
-		hierarchy.hips.AddForce(dir * moveForce * moveLerper * Time.deltaTime);
+
+		float moveForceToUse = moveForce;
+		float asdSpeed = hierarchy.hips.velocity.magnitude;
+		print(asdSpeed);
+		if (asdSpeed < 1f)
+		{
+			//moveForceToUse *= 0.5f;
+			hierarchy.hips.AddForce(dir * moveForceToUse * moveLerper * Time.deltaTime);
+
+		}
+
 		//hierarchy.rFoot.AddForce(dir * 0.2f * moveForce * moveLerper * Time.deltaTime);
 		//hierarchy.lFoot.AddForce(dir * 0.2f * moveForce * moveLerper * Time.deltaTime);
 		//hierarchy.head.AddForce(Vector3.up * 100f * Time.deltaTime);
@@ -118,6 +128,9 @@ public class Mover : ManagedPuppet
 		if (backChain.foot.transform.localPosition.z > 0f)
 		{
 			backChain.foot.GetComponent<Rigidbody>().AddForce(Vector3.down * 700f);
+			backChain.SetRotation(backChain.thigh, new Quaternion(0, 0, 0, 1));
+			backChain.SetRotation(backChain.leg, new Quaternion(0, 0, 0, 1));
+
 		}
 
 		frontChain.SetRotation(frontChain.foot, new Quaternion(0, 0, 0, 1));
