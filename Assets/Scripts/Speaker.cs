@@ -70,7 +70,7 @@ public class Speaker : MonoBehaviour
 		}
 		else // no Sentence exists; Creating one!
 		{
-			GameObject newBubble = Instantiate(speechBubblePrefab, transform.position + Vector3.up * 2, Quaternion.identity) as GameObject;
+			GameObject newBubble = Instantiate(speechBubblePrefab, transform.position + Vector3.up, Quaternion.identity) as GameObject;
 			currentSpeechBubble = newBubble.GetComponent<SpeakBubble>();
 			currentSentence = "";
 			currentOffence = 0;
