@@ -7,6 +7,7 @@ public class ManagedPuppet : MonoBehaviour
 	protected Mover mover;
 	protected Balancer balancer;
 	protected Rotator rotator;
+	protected AbstractInput input;
 
 	protected virtual void Awake()
 	{
@@ -14,6 +15,7 @@ public class ManagedPuppet : MonoBehaviour
 		mover = GetComponent<Mover>();
 		balancer = GetComponent<Balancer>();
 		rotator = GetComponent<Rotator>();
+		input = GetComponent<AbstractInput>();
 		OnAwake();
 	}
 
