@@ -25,7 +25,8 @@ public class SpeakBubble : MonoBehaviour
 				Destroy(gameObject);
 			}
 		}
-		transform.LookAt(-Camera.main.transform.position, Vector3.up);
+		//transform.LookAt(-Camera.main.transform.position, Vector3.up);
+		transform.forward = (transform.position - Camera.main.transform.position).normalized;
 	}
 
 	public void AddText(string word)
