@@ -17,13 +17,13 @@ public class SoundTransition : MonoBehaviour {
 		msP = GameObject.FindWithTag("musicPlayer").GetComponent<musicPlayer>();
 
 		musicList[1].playOnAwake = false;
-		musicList[0].playOnAwake = false;
+		musicList[0].playOnAwake = true;
 
 		musicList[1].spatialBlend = 1;
 		musicList[0].spatialBlend = 1;
 
-		musicList[0].volume = 0;
-		musicList[1].volume = 0;
+		musicList[0].volume = 1;
+		musicList[1].volume = 1;
 
 	}
 	
@@ -33,8 +33,6 @@ public class SoundTransition : MonoBehaviour {
 		{
 			musicList[0].clip = msP.twoSong;
 			musicList[0].Play();
-			musicList[0].DOKill();
-			musicList[0].DOFade(0.6f, 5);
 
 		}
 		songSwitch();
@@ -62,10 +60,6 @@ public class SoundTransition : MonoBehaviour {
 		if (musicList[0].isPlaying == true && musicList[0].time >= msP.oneSong.length - 5)
 		{
 			print("lerp one to two");
-			musicList[0].DOKill();
-			musicList[1].DOKill();
-			musicList[0].DOFade(0, 5);
-			musicList[1].DOFade(0.6f, 3);
 			if (musicList[0].volume <= 0.00001f)
 			{
 
@@ -76,11 +70,6 @@ public class SoundTransition : MonoBehaviour {
 		if (musicList[1].isPlaying == true && musicList[1].time >= msP.twoSong.length - 5)
 		{
 			print("lerp two to one");
-
-			musicList[0].DOKill();
-			musicList[1].DOKill();
-			musicList[0].DOFade(0.6f, 5);
-			musicList[1].DOFade(0, 3);
 
 			if (musicList[1].volume <= 0.00001f)
 			{
