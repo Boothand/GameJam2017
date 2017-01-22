@@ -34,7 +34,7 @@ public class SoundTransition : MonoBehaviour {
 			musicList[0].clip = msP.twoSong;
 			musicList[0].Play();
 			musicList[0].DOKill();
-			musicList[0].DOFade(1, 5);
+			musicList[0].DOFade(0.4f, 5);
 
 		}
 		songSwitch();
@@ -65,7 +65,7 @@ public class SoundTransition : MonoBehaviour {
 			musicList[0].DOKill();
 			musicList[1].DOKill();
 			musicList[0].DOFade(0, 5);
-			musicList[1].DOFade(1, 3);
+			musicList[1].DOFade(0.4f, 3);
 			if (musicList[0].volume <= 0.00001f)
 			{
 
@@ -79,7 +79,7 @@ public class SoundTransition : MonoBehaviour {
 
 			musicList[0].DOKill();
 			musicList[1].DOKill();
-			musicList[0].DOFade(1, 5);
+			musicList[0].DOFade(0.4f, 5);
 			musicList[1].DOFade(0, 3);
 
 			if (musicList[1].volume <= 0.00001f)
