@@ -26,6 +26,8 @@ public class Puncher : ManagedPuppet
 	[SerializeField] CollisionChecker handCheck;
 	bool punching;
 	ConfigurableJoint grabJoint;
+	[SerializeField] AudioSource audioSource;
+	[SerializeField] AudioClip[] punchClips;
 
 	protected override void OnAwake()
 	{
@@ -75,7 +77,10 @@ public class Puncher : ManagedPuppet
 	{
 		if (punching)
 		{
-			print("Ran hit event");
+			AudioClip randomClip = punchClips[Random.Range(0, punchClips.Length)];
+			audioSource.pitch = 1 + Random.Range(-0.1f, 0.1f);
+			audioSource.PlayOneShot(randomClip);
+			//print("Ran hit event");
 			Rigidbody otherBody = col.transform.GetComponent<Rigidbody>();
 			if (otherBody)
 			{
