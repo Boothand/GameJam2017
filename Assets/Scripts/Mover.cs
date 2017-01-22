@@ -51,13 +51,13 @@ public class Mover : ManagedPuppet
 	void TakeInput(ref float targetSpeed)
 	{
 		//Input: Move forward
-		if (Input.GetKey(KeyCode.W))
+		if (input.forward)
 		{
 			targetSpeed = 1f;
 		}
 
 		//Input: Move backward
-		if (Input.GetKey(KeyCode.S))
+		if (input.backward)
 		{
 			targetSpeed = -1f;
 		}
@@ -126,13 +126,6 @@ public class Mover : ManagedPuppet
 			//frontChain.leg.GetComponent<Rigidbody>().AddForce(transform.forward * 800f);
 		}
 
-		if (Input.GetKey(KeyCode.R))
-		{
-			backChain.SetRotation(backChain.foot, new Quaternion(-1, 0, 0, 1));
-			hierarchy.hips.AddForce(Vector3.up * 30f);
-			//backChain.foot.GetComponent<Rigidbody>().AddForce(Vector3.down * 1000f);
-		}
-
 		//frontChain.foot.GetComponent<Rigidbody>().AddForce(Vector3.down * 1000f);
 
 		//if (backChain.foot.transform.localPosition.z > 0.3f)
@@ -163,7 +156,6 @@ public class Mover : ManagedPuppet
 
 		if (backChain.foot.transform.localPosition.z < -1.15f)
 		{
-			print("Switched feet");
 			LegChain currentChain = frontChain;
 			frontChain = backChain;
 			backChain = currentChain;
