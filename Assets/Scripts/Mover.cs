@@ -73,8 +73,7 @@ public class Mover : ManagedPuppet
 		moveLerper = Mathf.MoveTowards(moveLerper, targetSpeed, Time.deltaTime * accelerationSpeed);
 
 		//Fall forward
-		Vector3 forward = forwardTarget.forward;
-
+		//Git comment, notice me
 		Vector3 forward = transform.forward;
 
 		if (forwardTarget)
@@ -89,7 +88,6 @@ public class Mover : ManagedPuppet
 
 		float moveForceToUse = moveForce;
 		float asdSpeed = hierarchy.hips.velocity.magnitude;
-		print(asdSpeed);
 		//print(asdSpeed);
 		if (asdSpeed < 1f)
 		{
