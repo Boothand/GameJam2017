@@ -25,12 +25,12 @@ public class Mover : ManagedPuppet
 {
 	[SerializeField] float moveForce = 400f;
 	[SerializeField] float accelerationSpeed = 2f;
+	[SerializeField] Transform forwardTarget;
 	public bool moving { get; private set; }
 	public float moveLerper { get; private set; }
 
 	LegChain rightChain, leftChain;
 	LegChain frontChain, backChain;
-	float asd;
 
 	protected override void OnAwake()
 	{
@@ -73,7 +73,11 @@ public class Mover : ManagedPuppet
 		moveLerper = Mathf.MoveTowards(moveLerper, targetSpeed, Time.deltaTime * accelerationSpeed);
 
 		//Fall forward
-		Vector3 dir = hierarchy.hips.transform.forward + Vector3.up * 1f;
+		Vector3 forward = forwardTarget.forward;
+		transform.forward = Vector3.Lerp(transform.forward, forward, Time.deltaTime * 2f);
+		//Vector3 dir = hierarchy.hips.transform.forward + Vector3.up * 1f;
+		Vector3 dir = forward + Vector3.up * 1f;
+
 
 		float moveForceToUse = moveForce;
 		float asdSpeed = hierarchy.hips.velocity.magnitude;
@@ -90,7 +94,6 @@ public class Mover : ManagedPuppet
 		//hierarchy.head.AddForce(Vector3.up * 100f * Time.deltaTime);
 
 		float hipVel = hierarchy.hips.velocity.magnitude;
-		asd = Mathf.MoveTowards(asd, hipVel, Time.deltaTime * 2f);
 		//print(hipVel);
 
 		if (frontChain.foot.transform.localPosition.z > 0.5f)
