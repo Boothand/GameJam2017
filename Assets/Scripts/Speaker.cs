@@ -132,7 +132,7 @@ public class Speaker : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.Return))
+		if (Input.GetKeyDown(KeyCode.Mouse1))
 		{
 			timeLeft = timer;
 			Speak();
