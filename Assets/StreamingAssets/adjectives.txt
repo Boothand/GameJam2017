@@ -1,21 +1,26 @@
-rainbow 0
-bald -1
-ugly -2
-dumb -2
-smelly -1
-lucky 1
-nice 2
-bad -1
+rainbow-like 0
+with no hair -1
+in an ugly way -2
+like idiots -2
+with a smell -1
+luckily 1
+nicely 2
+badly -1
 braindead -2
 yellow 0
-huge 0
+like someone huge 0
 good 1
 fine 0
-awkward -1
-tasty 0
-wierd -1
+awkwardly -1
+tastily 0
+weirdly -1
 blocky 0
 transparent 0
 sexy 1
 cool 1
 different 0
+non-stop 0
+horribly -1
+like my pet 0 
+like my home 0
+like your house -1
