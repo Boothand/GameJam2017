@@ -25,6 +25,7 @@ public class SpeakBubble : MonoBehaviour
 				Destroy(gameObject);
 			}
 		}
+		transform.LookAt(-Camera.main.transform.position, Vector3.up);
 	}
 
 	public void AddText(string word)
@@ -35,5 +36,10 @@ public class SpeakBubble : MonoBehaviour
 	public void Release()
 	{
 		flying = true;
+	}
+
+	public void SetColor(Color c)
+	{
+		tx.color = c;
 	}
 }
