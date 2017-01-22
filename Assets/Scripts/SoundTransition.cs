@@ -19,6 +19,9 @@ public class SoundTransition : MonoBehaviour {
 		musicList[1].playOnAwake = false;
 		musicList[0].playOnAwake = false;
 
+		musicList[1].spatialBlend = 1;
+		musicList[0].spatialBlend = 1;
+
 		musicList[0].volume = 0;
 		musicList[1].volume = 0;
 

@@ -51,13 +51,13 @@ public class Mover : ManagedPuppet
 	void TakeInput(ref float targetSpeed)
 	{
 		//Input: Move forward
-		if (Input.GetKey(KeyCode.W))
+		if (input.forward)
 		{
 			targetSpeed = 1f;
 		}
 
 		//Input: Move backward
-		if (Input.GetKey(KeyCode.S))
+		if (input.backward)
 		{
 			targetSpeed = -1f;
 		}
@@ -73,7 +73,14 @@ public class Mover : ManagedPuppet
 		moveLerper = Mathf.MoveTowards(moveLerper, targetSpeed, Time.deltaTime * accelerationSpeed);
 
 		//Fall forward
-		Vector3 forward = forwardTarget.forward;
+		//Git comment, notice me
+		Vector3 forward = transform.forward;
+
+		if (forwardTarget)
+		{
+			forward = forwardTarget.forward;
+		}
+
 		transform.forward = Vector3.Lerp(transform.forward, forward, Time.deltaTime * 2f);
 		//Vector3 dir = hierarchy.hips.transform.forward + Vector3.up * 1f;
 		Vector3 dir = forward + Vector3.up * 1f;
@@ -81,7 +88,7 @@ public class Mover : ManagedPuppet
 
 		float moveForceToUse = moveForce;
 		float asdSpeed = hierarchy.hips.velocity.magnitude;
-		print(asdSpeed);
+		//print(asdSpeed);
 		if (asdSpeed < 1f)
 		{
 			//moveForceToUse *= 0.5f;
@@ -110,13 +117,6 @@ public class Mover : ManagedPuppet
 			//frontChain.SetRotation(frontChain.thigh, new Quaternion(-hipVel * 2, 0, 0, 1));
 			//frontChain.SetRotation(frontChain.leg, new Quaternion(hipVel * 1.3f, 0, 0, 1));
 			//frontChain.leg.GetComponent<Rigidbody>().AddForce(transform.forward * 800f);
-		}
-
-		if (Input.GetKey(KeyCode.R))
-		{
-			backChain.SetRotation(backChain.foot, new Quaternion(-1, 0, 0, 1));
-			hierarchy.hips.AddForce(Vector3.up * 30f);
-			//backChain.foot.GetComponent<Rigidbody>().AddForce(Vector3.down * 1000f);
 		}
 
 		//frontChain.foot.GetComponent<Rigidbody>().AddForce(Vector3.down * 1000f);
@@ -149,7 +149,6 @@ public class Mover : ManagedPuppet
 
 		if (backChain.foot.transform.localPosition.z < -1.15f)
 		{
-			print("Switched feet");
 			LegChain currentChain = frontChain;
 			frontChain = backChain;
 			backChain = currentChain;

@@ -17,7 +17,7 @@ public class SpeakBubble : MonoBehaviour
 	{
 		if (flying)
 		{
-			transform.Translate(Vector3.up * flySpeed * Time.deltaTime);
+			tx.transform.Translate(Vector3.up * flySpeed * Time.deltaTime);
 			timeLeft -= Time.deltaTime;
 
 			if (timeLeft <= 0)//Burst
