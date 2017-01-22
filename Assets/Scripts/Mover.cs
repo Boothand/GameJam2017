@@ -73,7 +73,17 @@ public class Mover : ManagedPuppet
 		moveLerper = Mathf.MoveTowards(moveLerper, targetSpeed, Time.deltaTime * accelerationSpeed);
 
 		//Fall forward
+<<<<<<< HEAD
 		Vector3 forward = forwardTarget.forward;
+=======
+		Vector3 forward = transform.forward;
+
+		if (forwardTarget)
+		{
+			forward = forwardTarget.forward;
+		}
+
+>>>>>>> b699199ffc68866a1f0223b3dedd5075ce6e6064
 		transform.forward = Vector3.Lerp(transform.forward, forward, Time.deltaTime * 2f);
 		//Vector3 dir = hierarchy.hips.transform.forward + Vector3.up * 1f;
 		Vector3 dir = forward + Vector3.up * 1f;
@@ -81,7 +91,11 @@ public class Mover : ManagedPuppet
 
 		float moveForceToUse = moveForce;
 		float asdSpeed = hierarchy.hips.velocity.magnitude;
+<<<<<<< HEAD
 		print(asdSpeed);
+=======
+		//print(asdSpeed);
+>>>>>>> b699199ffc68866a1f0223b3dedd5075ce6e6064
 		if (asdSpeed < 1f)
 		{
 			//moveForceToUse *= 0.5f;
