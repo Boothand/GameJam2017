@@ -160,13 +160,15 @@ public class TextGenerator : MonoBehaviour
 		return temp;
 	}
 
-	public string GenerateSentence(out int offence) // negative is more offencive
+	public List<KeyValuePair<string, int>> GenerateSentence() // negative is more offencive
 	{
 		string sentence = "";
-		offence = 0;
+		int offence = 0;
 
 		int r = UnityEngine.Random.Range(0, recipeList.Count);
 		int[] components = recipeList[r];
+
+		List<KeyValuePair<string, int>> pairs = new List<KeyValuePair<string, int>>();
 
 		foreach (int i in components)
 		{
@@ -180,9 +182,11 @@ public class TextGenerator : MonoBehaviour
 					sentence += " ";
 				sentence += dd[rand].Key;
 				offence += dd[rand].Value;
+				pairs.Add(dd[rand]);
 			}
 		}
-		return FirstCharToUpper(sentence);
+		//return FirstCharToUpper(sentence);
+		return pairs;
 	}
 
 	public static string FirstCharToUpper(string input)
@@ -190,16 +194,5 @@ public class TextGenerator : MonoBehaviour
 		if (String.IsNullOrEmpty(input))
 			throw new ArgumentException("ARGH!");
 		return input.First().ToString().ToUpper() + input.Substring(1);
-	}
-
-	void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			int o;
-			string s = GenerateSentence(out o);
-
-			print(s + " (" + o + ")");
-		}
 	}
 }

@@ -1,5 +1,7 @@
 i am
 you are
+you are
+you are
 they are
 he is
 she is
@@ -8,4 +10,5 @@ it's a
 someone is a
 someone can
 we should
+why don't we
 hey stupid! You are -2
